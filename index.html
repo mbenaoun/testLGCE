@@ -1,0 +1,44 @@
+<html ng-app="app">
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.js"></script>
+    
+    <script src="./index.js"></script>
+    <script src="./controller.js"></script>
+    <script src="./factory.js"></script>
+    
+    <style>
+        /* Some css if needed */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        
+        <div ui-view></div>
+        <script type="text/ng-template" id="index.html">
+            <div class="col-md-3" style="margin: auto;" ng-repeat="user in users">
+			 <p><img src="{{ user.photo }}" class="img-circle center-block" alt="{{ user.id}}" height="100" width="100"></p>		 
+			     <p>{{ user.firstname }} {{ user.lastname }}</p>
+			     <button class="btn btn-primary pull-right" ui-sref="view({id: user.id})" >Voir le profil</button>
+		</div></div>
+        </script>
+        <script type="text/ng-template"  id="view.html">
+            <div>
+			<p><img src="{{ photo }}" class="img-circle center-block" alt="{{ id}}" height="150" width="150"></p>
+			<p>{{ prenom }} {{ nom }}</p>
+			<p>{{ description }}</p>
+			<a href="{{twitter}}" class="btn btn-primary pull-left" role="button">Twitter</a>			
+			<button class="btn btn-primary pull-right" ui-sref="index" >Retour</button>
+			</div>
+        </script>
+    </div>
+</body>
+
+</html>
